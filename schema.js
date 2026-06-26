@@ -14,7 +14,7 @@ module.exports.listingSchema = Joi.object({
     }).required()
 });
 
-// NEWLY CONFIRMED/ADDED BY MAM:
+
 module.exports.reviewSchema = Joi.object({
     review: Joi.object({
         rating: Joi.number().required().min(1).max(5),

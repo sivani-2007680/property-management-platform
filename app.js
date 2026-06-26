@@ -1,4 +1,4 @@
-// 1. Load environment variables FIRST
+
 if (process.env.NODE_ENV !== "production") {
     require('dotenv').config();
 }
@@ -17,22 +17,20 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js"); 
 
-// Import Routers
+
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
-// 2. Database URL Setup
+
 const dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/wanderlust";
 
-// 3. Connect-Mongo Setup (Ensure package is imported properly)
+
 const MongoStore = require("connect-mongo");
 
-const store = MongoStore.create({
+const store =MongoStore.create({
     mongoUrl: dbUrl,
-    crypto: {
-        secret: process.env.SECRET || "mysupersecretcode", 
-    },
+    
     touchAfter: 24 * 3600, 
 });
 
@@ -40,7 +38,6 @@ store.on("error", (err) => {
     console.log("ERROR IN MONGO SESSION STORE", err);
 });
 
-// 4. Connect to Mongoose DB
 main()
     .then(() => {
         console.log("connected to DB");
@@ -62,10 +59,9 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "public")));
 
-// Session configuration options
 const sessionOptions = {
     store: store,
-    secret: process.env.SECRET || "mysupersecretcode", 
+    secret: process.env.SECRET || "9f3c8b2a7d4e91c0a6b7f5d8e2c1a9d0f4e6b8c3d1a2f9e7b6c5d4a3b2c1d0f", 
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -75,7 +71,7 @@ const sessionOptions = {
     },
 };
 
-// 3. FIXED ORDER: Sessions and Flash MUST run before routes!
+
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -85,7 +81,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Global variables middleware
+
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");

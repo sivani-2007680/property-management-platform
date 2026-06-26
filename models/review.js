@@ -1,4 +1,4 @@
-// models/review.js
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -13,7 +13,7 @@ const reviewSchema = new Schema({
         type: Date,
         default: Date.now()
     },
-    // --- NEW FIELD ADDED IN THIS VIDEO ---
+    
     author: {
         type: Schema.Types.ObjectId,
         ref: "User"

@@ -4,14 +4,14 @@ const { wrapAsync, ExpressError } = require("../utils/wrapasync");
 const { listingSchema } = require("../schema.js");
 const { isLoggedIn, isOwner } = require("../middleware.js");
 
-// Import the listings controller
+
 const listingController = require("../controllers/listing.js");
 
 const { storage } = require("../cloudConfig.js");
 const multer  = require('multer');
 const upload = multer({ storage });
 
-// Middleware to ensure Cloudinary credentials are present before attempting an upload
+
 const checkCloudinaryConfigured = (req, res, next) => {
     const cloudName = process.env.CLOUD_NAME || process.env.CLOUDINARY_CLOUD_NAME;
     const apiKey = process.env.CLOUDINARY_KEY || process.env.CLOUD_API_KEY;
@@ -23,7 +23,7 @@ const checkCloudinaryConfigured = (req, res, next) => {
     next();
 };
 
-// Validation middleware for listings
+
 const validateListing = (req, res, next) => {
     if (!req.body.listing) {
         req.body.listing = {};
@@ -44,7 +44,7 @@ const validateListing = (req, res, next) => {
     }
 };
 
-// 1. Root Path Routes: "/"
+
 router.route("/")
     .get(wrapAsync(listingController.index))
     .post(
@@ -54,10 +54,9 @@ router.route("/")
         wrapAsync(listingController.createListing)
     );
 
-// 2. New Route
+
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
-// 3. ID Path Routes: "/:id"
 router.route("/:id")
     .get(wrapAsync(listingController.showListing))
     .put(
@@ -69,7 +68,7 @@ router.route("/:id")
     )
     .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
 
-// 4. Edit Route
+
 router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.renderEditForm));
 
 module.exports = router;

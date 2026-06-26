@@ -9,7 +9,7 @@ const userSchema = new Schema({
     }
 });
 
-// This plugin automatically handles username, hash, and salt fields
+
 userSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', userSchema);

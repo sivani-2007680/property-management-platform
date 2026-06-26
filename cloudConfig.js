@@ -4,8 +4,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-// 1. Linking your backend with your online Cloudinary account instance
-// Support multiple possible environment variable names (project may use CLOUD_API_KEY etc.)
+
 const cloudName = process.env.CLOUD_NAME || process.env.CLOUDINARY_CLOUD_NAME;
 const apiKey = process.env.CLOUDINARY_KEY || process.env.CLOUD_API_KEY;
 const apiSecret = process.env.CLOUDINARY_SECRET || process.env.CLOUD_API_SECRET;
@@ -20,10 +19,10 @@ cloudinary.config({
     api_secret: apiSecret
 });
 
-// 2. Defining the specific folder name and storage rules for Wanderlust uploads
+ 
 let storage;
 
-// If Cloudinary credentials are invalid or obviously placeholder values, fall back to local disk storage.
+
 const isPlaceholder = (val) => {
     if (!val) return true;
     const lower = String(val).toLowerCase();
@@ -41,7 +40,7 @@ if (credsValid) {
         },
     });
 } else {
-    // Ensure uploads directory exists
+    
     const uploadDir = path.join(__dirname, 'uploads');
     if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 

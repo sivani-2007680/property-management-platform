@@ -1,8 +1,8 @@
-// controllers/listing.js
+
 
 const Listing = require("../models/listing");
 
-// --- 1. CONFIGURATION: IMPORT AND INITIALIZE MAPBOX GEOCODING SDK ---
+
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
@@ -28,20 +28,18 @@ const resolveLocationGeometry = async (location) => {
         return DEFAULT_GEOMETRY;
     }
 };
-// -------------------------------------------------------------------
 
-// 1. Index Route Logic
 module.exports.index = async (req, res) => {
     const alllistings = await Listing.find({});
     res.render("listings/index", { alllistings });
 };
 
-// 2. Render New Form Logic
+
 module.exports.renderNewForm = (req, res) => {
     res.render("listings/new");
 };
 
-// 3. Show Route Logic
+
 module.exports.showListing = async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id)
@@ -60,7 +58,7 @@ module.exports.showListing = async (req, res) => {
     res.render("listings/show.ejs", { listing });
 };
 
-// 4. Create Route Logic (CORRECTED WITH API FALLBACK SAFETY)
+
 module.exports.createListing = async (req, res, next) => {
     try {
         if (!req.file) {
@@ -83,14 +81,13 @@ module.exports.createListing = async (req, res, next) => {
         req.flash("success", "New Listing Created!");
         res.redirect("/listings");
     } catch (err) {
-       console.log("======== ERROR DETECTED ON CREATION ========");
-        console.error(err); // This line forces the terminal to print the exact problem
-        console.log("============================================");
+     
+        console.error(err);
+       
         next(err);
     }
 };
 
-// 5. Edit Route Logic
 module.exports.renderEditForm = async (req, res, next) => {
     try {
         let { id } = req.params;
@@ -109,7 +106,7 @@ module.exports.renderEditForm = async (req, res, next) => {
     }
 };
 
-// 6. Update Route Logic
+
 module.exports.updateListing = async (req, res, next) => {
     try {
         let { id } = req.params;
@@ -135,7 +132,7 @@ module.exports.updateListing = async (req, res, next) => {
     }
 };
 
-// 7. Delete Route Logic
+
 module.exports.destroyListing = async (req, res, next) => {
     try {
         let { id } = req.params;

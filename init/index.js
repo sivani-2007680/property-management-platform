@@ -21,11 +21,10 @@ async function main() {
 const initDB = async () => {
     await Listing.deleteMany({});
     
-    // MODIFIED IN THIS VIDEO:
-    // Loops through every entry in data.js and attaches your testing user ID as the owner
+    
     initData.data = initData.data.map((obj) => ({
         ...obj,
-        owner: "6a3e4095467628132387cd65", // Replace this with an actual user object ID from your DB!
+        owner: "6a3e4095467628132387cd65", 
     }));
     
     await Listing.insertMany(initData.data);
