@@ -11,7 +11,7 @@ body{
     height: 5rem;
     background-color: white;
     display: flex !important;
-    align-items: center !important; /* Forces all items to stay perfectly centered vertically */
+    align-items: center !important;
 }
 .fa-compass{
     color: #fe424d;
@@ -59,8 +59,8 @@ body{
 .card-img-top{
    border-radius: 1rem!important;
    width: 100%!important;
-   height: 20rem !important; /* Forces all listing images to equal height */
-   object-fit: cover!important; /* Prevents stretching by cropping cleanly */
+   height: 20rem !important; 
+   object-fit: cover!important;
 }
 .card-body{
     padding: 0 !important;
@@ -96,10 +96,10 @@ input::-webkit-inner-spin-button {
 }
 
 input[type=number] {
-  moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
-/* Listing show view: title above image, centered */
+
 .show-title-top{
   text-align: center;
   margin: 0.75rem 0;
@@ -108,6 +108,10 @@ input[type=number] {
   margin: 0;
   font-size: 1.5rem;
 }
+
+
+
+
 
 .listing-card {
     border: none !important;
@@ -119,6 +123,7 @@ input[type=number] {
     object-fit: cover;
     border-radius: 1rem !important;
 }
+
 
 
 .review-card {
@@ -137,6 +142,8 @@ input[type=number] {
 
 
 }
+
+
 
 
 #filters-container {
