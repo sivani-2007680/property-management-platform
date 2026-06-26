@@ -120,7 +120,7 @@ app.get("/demouser", async (req, res) => {
 
 // Root route
 app.get("/", (req, res) => {
-    res.send("HI, I am root");
+   res.redirect("/listings");
 });
 
 // 4. FIXED ORDER: Actual application routers now run safely down here
