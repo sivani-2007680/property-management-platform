@@ -55,7 +55,7 @@ body{
    margin-bottom: 2rem;
 }
 
-/* --- Card Image Styling for Grid Index Page --- */
+
 .card-img-top{
    border-radius: 1rem!important;
    width: 100%!important;
@@ -99,7 +99,7 @@ input[type=number] {
   moz-appearance: textfield;
 }
 
-/* Listing show view: title above image, centered */
+
 .show-title-top{
   text-align: center;
   margin: 0.75rem 0;
@@ -109,28 +109,27 @@ input[type=number] {
   font-size: 1.5rem;
 }
 
-/* --- Card Styling Changes --- */
 
-/* Targets ONLY the main listing details card to strip its borders */
+
+
 .listing-card {
     border: none !important;
 }
 
-/* Targets the main image on the individual show page */
+
 .show-img {
     height: 30vh;
     object-fit: cover;
     border-radius: 1rem !important;
 }
 
-/* --- New Review Card Styling --- */
 .review-card {
     border: 1px solid black !important;
     border-radius: 0.5rem !important;
     padding: 0.5rem;
     background-color: #fff;
 }
-/* public/css/style.css */
+
 
 
 #map {
@@ -141,12 +140,6 @@ input[type=number] {
 
 }
 
-/* public/css/style.css */
-/* public/css/style.css */
-
-/* public/css/style.css */
-
-/* Flex wrapper to align everything horizontally on a single line */
 #filters-container {
     display: flex;
     align-items: center;
@@ -179,7 +172,7 @@ input[type=number] {
     margin-bottom: 0;
 }
 
-/* NEW ADDITION: Tax Toggle Styling Box */
+
 .tax-toggle {
     border: 1px solid rgba(0, 0, 0, 0.25);
     border-radius: 1rem;
@@ -193,16 +186,12 @@ input[type=number] {
 .tax-info {
     display: none;
 }
-/* public/css/style.css */
 
-/* public/css/style.css */
-
-/* Center container on desktop viewports */
 .search-container {
     min-width: 300px;
 }
 
-/* Rounded Input field styling */
+
 .search-input {
     border-radius: 25px !important;
     padding: 0.5rem 3.5rem 0.5rem 1.25rem !important;
